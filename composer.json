@@ -1,6 +1,6 @@
 {
     "name":"originphp/debug-plugin",
-    "description":"OriginPHP debug plugin",
+    "description":"OriginPHP Debug Plugin",
     "require": {
         "composer/installers": "~1.0"
     },
