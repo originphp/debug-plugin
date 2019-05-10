@@ -6,7 +6,7 @@
     },
     "extra": {
         "installer-paths": {
-            "plugins/": ["vendor/package"]
+            "plugins/debug/": ["vendor/package"]
         }
     }
   }
