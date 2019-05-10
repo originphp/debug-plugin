@@ -9,7 +9,7 @@
       }
     },
     "require": {
-        "originphp/plugin-installer": "dev-master"
+        "originphp/plugin-installer": "*"
     },
     "extra": {
       "install": "plugins/debug"
