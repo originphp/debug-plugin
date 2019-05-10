@@ -1,4 +1,10 @@
 {
     "name":"originphp/debug-plugin",
-    "description":"OriginPHP Debug Plugin"
+    "description":"OriginPHP Debug Plugin",
+    "autoload": {
+      "psr-4": {
+        "Debug\\": "src/",
+        "Debug\\Test\\": "tests/"
+      }
+    }
   }
