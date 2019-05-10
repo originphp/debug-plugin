@@ -1,6 +1,7 @@
 {
     "name":"originphp/debug-plugin",
     "description":"OriginPHP Debug Plugin",
+    "type": "cakephp-plugin",
     "require": {
         "composer/installers": "~1.0"
     },
