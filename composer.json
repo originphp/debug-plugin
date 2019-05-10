@@ -1,0 +1,12 @@
+{
+    "name":"originphp/debug-plugin",
+    "description":"OriginPHP debug plugin",
+    "require": {
+        "composer/installers": "~1.0"
+    },
+    "extra": {
+        "installer-paths": {
+            "plugins/debug": ["vendor/package"]
+        }
+    }
+  }
