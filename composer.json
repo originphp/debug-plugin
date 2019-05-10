@@ -10,5 +10,8 @@
     },
     "require": {
         "originphp/plugin-installer": "dev-master"
+    },
+    "extra": {
+      "install": "plugins/debug"
     }
   }
