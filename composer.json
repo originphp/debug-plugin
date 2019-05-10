@@ -7,7 +7,7 @@
     "extra": {
         "installer-name": "debug",
         "installer-paths": {
-            "plugins/{$name}/": ["vendor/package"]
+            "plugins/{$name}/": ["originphp/debug-plugin"]
         }
     }
   }
