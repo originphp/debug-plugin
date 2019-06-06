@@ -9,6 +9,6 @@
       }
     },
     "require": {
-        "originphp/plugin-installer": "*r"
+        "originphp/plugin-installer": "*"
     }
   }
