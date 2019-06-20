@@ -20,6 +20,7 @@ namespace Debug;
 
 use Origin\Model\ConnectionManager;
 use Origin\Core\Configure;
+use Origin\Http\Dispatcher;
 
 class DebugBar
 {
@@ -42,10 +43,7 @@ class DebugBar
             return;
         }
 
-        global $Dispatcher;
-
-       
-        $controller = $Dispatcher->controller();
+        $controller = Dispatcher::instance()->controller();
         $request = $controller->request;
 
         $log = [];
