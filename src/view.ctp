@@ -97,19 +97,19 @@ height:90%;
           foreach ($debug_vars as $key => $value) {
               ?>
               <dt class="col-sm-1"><?= $key; ?></dt>
-              <dd class="col-sm-11"><pre><?php print_r($value); ?></pre></dd>
+              <dd class="col-sm-11"><pre><?= h(print_r($value, true)); ?></pre></dd>
             <?php
           }
         ?>
         </dl>
       </div>
     <div id="debugbar-request">
-          <dl class="row">
+      <dl class="row">
       <?php
         foreach ($debug_request as $key => $value) {
             ?>
             <dt class="col-sm-1"><?= $key; ?></dt>
-            <dd class="col-sm-11"><pre><?php print_r($value); ?></pre></dd>
+            <dd class="col-sm-11"><pre><?= h(print_r($value, true)); ?></pre></dd>
           <?php
         }
       ?>
@@ -121,7 +121,7 @@ height:90%;
         foreach ($debug_session as $key => $value) {
             ?>
             <dt class="col-sm-1"><?= $key; ?></dt>
-            <dd class="col-sm-11"><pre><?php print_r($value); ?></pre></dd>
+            <dd class="col-sm-11"><pre><?= h(print_r($value, true)); ?></pre></dd>
           <?php
         }
       ?>
@@ -159,7 +159,6 @@ height:90%;
 
   $( document ).ready(function() {
     debugbarTabSwitcher();
-
   });
   function debugbarTabSwitcher(){
     $( "#debug-hide-tab" ).click(function() {
