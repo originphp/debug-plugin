@@ -142,7 +142,7 @@ height:90%;
             foreach ($debug_sql as $query) {
                 ?>
                 <tr>
-                  <td><?= $query['query']; ?></td>
+                  <td><?= h($query['query']); ?></td>
                   <td><?= $query['error']; ?></td>
                   <td><?= $query['affected']; ?></td>
                   <td><?= $query['time']; ?></td>

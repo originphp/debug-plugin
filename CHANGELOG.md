@@ -19,6 +19,9 @@ Upload:       git push origin --tags
 Delete tag:   git tag -d <tag_name>
 
 ## [Unreleased]
-## [1.3.1] - 2019-05-15
+## [1.3.2] - 2019-05-24
+- Escaped SQL log items
+
+## [1.3.1] - 2019-05-24
 ### Security
 - Escaped values in debugbar
