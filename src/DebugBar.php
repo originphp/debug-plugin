@@ -18,9 +18,9 @@
 
 namespace Debug;
 
-use Origin\Model\ConnectionManager;
 use Origin\Core\Configure;
 use Origin\Http\Dispatcher;
+use Origin\Model\ConnectionManager;
 
 class DebugBar
 {
@@ -31,7 +31,7 @@ class DebugBar
      */
     public function render()
     {
-        if (!Configure::read('debug')) {
+        if (! Configure::read('debug')) {
             return null;
         }
 
@@ -52,34 +52,34 @@ class DebugBar
             $log = $connection->log();
         }
 
-        $debugVars = array(
-      'debug_sql' => $log,
-      'debug_request' => array(
-        'params' => $request->params(),
-        'query' => $request->query(),
-        'data' => $request->data(),
-        'cookie' => $_COOKIE,
-      ),
-      'debug_vars' => array(
-        'variables' => $controller->viewVars,
-        'memory' => mbkb(memory_get_usage(false)),
-        'took' => (microtime(true) - START_TIME).' ms',
-      ),
-      'debug_session' => $_SESSION,
-      );
+        $debugVars = [
+            'debug_sql' => $log,
+            'debug_request' => [
+                'params' => $request->params(),
+                'query' => $request->query(),
+                'data' => $request->data(),
+                'cookie' => $_COOKIE,
+            ],
+            'debug_vars' => [
+                'variables' => $controller->viewVars,
+                'memory' => $this->mbkb(memory_get_usage(false)),
+                'took' => round(microtime(true) - START_TIME, 6) . ' seconds',
+            ],
+            'debug_session' => $_SESSION,
+        ];
 
         extract($debugVars);
         include 'view.ctp';
     }
-}
-/**
- * Temporary until other libs done.
- */
-function mbkb($bytes)
-{
-    if ($bytes >= 1048576) {
-        return number_format($bytes / 1048576, 2).' mb';
-    }
 
-    return number_format($bytes / 1024, 2).' kb';
+    public function mbkb($bytes)
+    {
+        $out = [$bytes / 1024,'kb'];
+
+        if ($bytes >= 1048576) {
+            $out = [$bytes / 1048576,'mb'];
+        }
+    
+        return number_format($out[0], 2) .' ' . $out[1];
+    }
 }

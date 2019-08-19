@@ -19,6 +19,10 @@ Upload:       git push origin --tags
 Delete tag:   git tag -d <tag_name>
 
 ## [Unreleased]
+## [1.3.3] - 2019-08-19
+### Changed
+- Formatting of seconds rounded
+
 ## [1.3.2] - 2019-05-24
 - Escaped SQL log items
 
