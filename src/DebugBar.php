@@ -18,7 +18,7 @@
 
 namespace Debug;
 
-use Origin\Core\Configure;
+use Origin\Core\Config;
 use Origin\Http\Dispatcher;
 use Origin\Model\ConnectionManager;
 
@@ -31,7 +31,7 @@ class DebugBar
      */
     public function render()
     {
-        if (! Configure::read('debug')) {
+        if (! Config::read('debug')) {
             return null;
         }
 

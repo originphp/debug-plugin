@@ -92,10 +92,10 @@ class Profiler
      * Logs message
      *
      * @param string $message
-     * @return void
+     * @return bool
      */
-    public function log(string $message)
+    public function log(string $message) : bool
     {
-        return file_put_contents(LOGS . DS . 'profile-' . $this->timestamp . '.log', $message ."\n", FILE_APPEND | LOCK_EX);
+        return (bool) file_put_contents(LOGS . DS . 'profile-' . $this->timestamp . '.log', $message ."\n", FILE_APPEND | LOCK_EX);
     }
 }
