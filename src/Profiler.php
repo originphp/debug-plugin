@@ -20,7 +20,7 @@ use Origin\Core\Log;
  *
  * To test whole app: in public/index.php add before the dispatcher code: (Or you can add to your App controller)
  *
- *  require dirname(__DIR__).'/plugins/debug/src/Profiler.php';
+ *  require dirname(__DIR__).'/vendor/originphp/debug-plugin/src/Profiler.php';
  *  $profiler = new Debug\Profiler();
  *  $profiler->register();
  *
@@ -31,7 +31,7 @@ use Origin\Core\Log;
  *  to the top of each file you want to profile such as dispatcher, controller etc. If you
  *  are just testing one script, then add then just add this
  *
- *  require dirname(__DIR__).'/plugins/debug/src/Profiler.php';
+ *  require dirname(__DIR__).'/vendor/originphp/debug-plugin/src/Profiler.php';
  *  $profiler = new Debug\Profiler();
  *  $profiler->register();
  *  declare(ticks=1);
