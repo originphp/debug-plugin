@@ -61,7 +61,7 @@ class DebugBar
                 'cookie' => $_COOKIE,
             ],
             'debug_vars' => [
-                'variables' => $controller->viewVars,
+                'variables' => $controller->viewVars(),
                 'memory' => $this->mbkb(memory_get_usage(false)),
                 'took' => round(microtime(true) - START_TIME, 6) . ' seconds',
             ],
