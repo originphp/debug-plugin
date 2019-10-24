@@ -1,7 +1,5 @@
-<?php 
+<?php
 namespace Debug;
-
-use Origin\Core\Log;
 
 /**
  * Simple Profiler uses ticks, output is sent to logs\profile.log.  As i test the framework
