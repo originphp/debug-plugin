@@ -27,11 +27,14 @@ class DebugBar
     /**
      * Renders the DebugBar.
      *
-     * @return string output;
+     * @return string|null output;
      */
     public function render()
     {
-        if (! Config::read('debug')) {
+        /**
+         * @deprecated debug
+         */
+        if (! Config::read('App.debug') && ! Config::read('debug')) {
             return null;
         }
 

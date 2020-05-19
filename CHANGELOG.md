@@ -18,7 +18,12 @@ Create:       git tag -a <tag_name> -m '<tag_message>'
 Upload:       git push origin --tags
 Delete tag:   git tag -d <tag_name>
 
-## [2.0.0] - xxx
+## [2.1.0] - 2020-05-19
+### Changed
+- Change debug var check to work with 2.6
+
+## [2.0.0] - 2019-10-24
+### Changed
 - Adjusted to work with version 2 of the framework.
 
 ## [Unreleased]
