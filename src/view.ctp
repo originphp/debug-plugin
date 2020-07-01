@@ -66,7 +66,7 @@ height:90%;
    text-decoration: none;
 
 }
-.debugbar-memory {
+.debugbar-summary {
   padding: 14px 16px;
   color:#fff;
 }
@@ -85,8 +85,8 @@ height:90%;
     <a id="debug-request-tab" class="debugbar-tab" href="#">Request</a>
     <a id="debug-session-tab" class="debugbar-tab" href="#">Session</a>
     <a id="debug-sql-tab" class="debugbar-tab" href="#">SQL</a>
-    <div class="debugbar-memory float-right">
-      <span> Memory: <?= $debug_vars['memory'] ?> </span>
+    <div class="debugbar-summary float-right">
+       <span> <?= $debug_vars['took'] ?> </span> / <span> <?= $debug_vars['memory'] ?> </span>
     </div>
     <a id="debug-hide-tab" class="debugbar-tab float-right" href="#">&times; hide</a>
   </div>
@@ -163,9 +163,11 @@ height:90%;
   function debugbarTabSwitcher(){
     $( "#debug-hide-tab" ).click(function() {
         $(".debugbar-body div").hide();
-        $(".debugbar-memory").show();
+        $(".debugbar-summary").show();
+        $(".debugbar-tab").removeClass('active');
         $(this).hide();
-          $(".debugbar").height('52px');
+         $(".debugbar").height('52px');
+
     });
     $( "#debug-console-tab" ).click(function() {
       debugbarTabClick();
@@ -174,7 +176,8 @@ height:90%;
 
     });
     $( "#debug-request-tab" ).click(function() {
-        debugbarTabClick();
+        
+      debugbarTabClick();
       $( "#debugbar-request" ).show();
       $(this).addClass('active');
 
@@ -194,10 +197,9 @@ height:90%;
   }
   function debugbarTabClick(){
       $(".debugbar").height('100%');
-    $("#debug-hide-tab").show();
-    $(".debugbar-memory").hide();
-    $(".debugbar-body div").hide();
-    $(".debugbar-tab").removeClass('active');
-    
+      $("#debug-hide-tab").show();
+      $(".debugbar-summary").hide();
+      $(".debugbar-body div").hide();
+      $(".debugbar-tab").removeClass('active');
   }
 </script>
