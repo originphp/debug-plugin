@@ -1,4 +1,5 @@
 <?php
+
 /**
  * More color scheme ideas from:.
  *
@@ -7,76 +8,97 @@
 ?>
 
 <style>
-body {
-  margin-bottom:60px;
-}
-.debugbar {
+  body {
+    margin-bottom: 60px;
+  }
 
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index:1000;
-  background-color:#3498db;
-}
+  .debugbar {
 
-#debugbar-console,#debugbar-request,#debugbar-sql,#debugbar-session ,#debug-hide-tab{
-  display:none;
-}
-.debugbar-header{
-  min-height: 52px;
-}
-.debugbar-body {
-  clear:both;
-  background:white;
-  font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-font-size: 1em;
-height:90%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #3498db;
+  }
 
-}
-.debugbar-body dd,.debugbar-body dt {
-  margin-bottom:0px; /** bootstrap bug fix **/
-}
-.debugbar-body dd,.debugbar-body dt {
-  padding:20px;
-}
-.debugbar-body dd, .debugbar-body dt,.debugar-body td {
-  border-bottom: 1px solid #bdc3c7;
-}
-.debugbar-body .table td ,.debugbar-body .table th{
-  border:none;
-  border-bottom: 1px solid #bdc3c7;
-}
-.debugbar-body div {
-  height:100%;
-  overflow-y : auto;
-  overflow-x : auto;
-  display:none;
-}
+  #debugbar-console,
+  #debugbar-request,
+  #debugbar-sql,
+  #debugbar-session,
+  #debug-hide-tab {
+    display: none;
+  }
 
-.debugbar-header a {
-  padding: 14px 16px;
-  transition: 0.3s;
-  float: left;
-   border: none;
-   outline: none;
-   cursor: pointer;
-   color:white;
-   font-weight:bold;
-   text-decoration: none;
+  .debugbar-header {
+    min-height: 52px;
+  }
 
-}
-.debugbar-summary {
-  padding: 14px 16px;
-  color:#fff;
-}
-.debugbar-header a:hover {
-  text-decoration:none;
-}
-.debugbar-header a.active {
-  background-color:#f1c40f;
-  color:#192a56;
-}
+  .debugbar-body {
+    clear: both;
+    background: white;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 1em;
+    height: 90%;
+
+  }
+
+  .debugbar-body dd,
+  .debugbar-body dt {
+    margin-bottom: 0px;
+    /** bootstrap bug fix **/
+  }
+
+  .debugbar-body dd,
+  .debugbar-body dt {
+    padding: 20px;
+  }
+
+  .debugbar-body dd,
+  .debugbar-body dt,
+  .debugar-body td {
+    border-bottom: 1px solid #bdc3c7;
+  }
+
+  .debugbar-body .table td,
+  .debugbar-body .table th {
+    border: none;
+    border-bottom: 1px solid #bdc3c7;
+  }
+
+  .debugbar-body div {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    display: none;
+  }
+
+  .debugbar-header a {
+    padding: 14px 16px;
+    transition: 0.3s;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+
+  }
+
+  .debugbar-summary {
+    padding: 14px 16px;
+    color: #fff;
+  }
+
+  .debugbar-header a:hover {
+    text-decoration: none;
+  }
+
+  .debugbar-header a.active {
+    background-color: #f1c40f;
+    color: #192a56;
+  }
 </style>
 
 <div class="debugbar">
@@ -86,7 +108,7 @@ height:90%;
     <a id="debug-session-tab" class="debugbar-tab" href="#">Session</a>
     <a id="debug-sql-tab" class="debugbar-tab" href="#">SQL</a>
     <div class="debugbar-summary float-right">
-       <span> <?= $debug_vars['took'] ?> </span> / <span> <?= $debug_vars['memory'] ?> </span>
+      <span> <?= $debug_vars['took'] ?> </span> / <span> <?= $debug_vars['memory'] ?> </span>
     </div>
     <a id="debug-hide-tab" class="debugbar-tab float-right" href="#">&times; hide</a>
   </div>
@@ -94,37 +116,43 @@ height:90%;
     <div id='debugbar-console'>
       <dl class="row">
         <?php
-          foreach ($debug_vars as $key => $value) {
-              ?>
-              <dt class="col-sm-1"><?= $key; ?></dt>
-              <dd class="col-sm-11"><pre><?= h(print_r($value, true)); ?></pre></dd>
-            <?php
-          }
+        foreach ($debug_vars as $key => $value) {
+            ?>
+          <dt class="col-sm-1"><?= $key; ?></dt>
+          <dd class="col-sm-11">
+            <pre><?= h(print_r($value, true)); ?></pre>
+          </dd>
+        <?php
+        }
         ?>
-        </dl>
-      </div>
+      </dl>
+    </div>
     <div id="debugbar-request">
       <dl class="row">
-      <?php
+        <?php
         foreach ($debug_request as $key => $value) {
             ?>
-            <dt class="col-sm-1"><?= $key; ?></dt>
-            <dd class="col-sm-11"><pre><?= h(print_r($value, true)); ?></pre></dd>
-          <?php
+          <dt class="col-sm-1"><?= $key; ?></dt>
+          <dd class="col-sm-11">
+            <pre><?= h(print_r($value, true)); ?></pre>
+          </dd>
+        <?php
         }
-      ?>
+        ?>
       </dl>
     </div>
     <div id="debugbar-session">
-          <dl class="row">
-      <?php
+      <dl class="row">
+        <?php
         foreach ($debug_session as $key => $value) {
             ?>
-            <dt class="col-sm-1"><?= $key; ?></dt>
-            <dd class="col-sm-11"><pre><?= h(print_r($value, true)); ?></pre></dd>
-          <?php
+          <dt class="col-sm-1"><?= $key; ?></dt>
+          <dd class="col-sm-11">
+            <pre><?= h(print_r($value, true)); ?></pre>
+          </dd>
+        <?php
         }
-      ?>
+        ?>
       </dl>
     </div>
     <div id="debugbar-sql">
@@ -132,74 +160,75 @@ height:90%;
         <thead>
           <tr>
             <th scope="col">Query</th>
-              <th scope="col">Error</th>
-                <th scope="col">Affected</th>
-                  <th scope="col">Time</th>
+            <th scope="col">Error</th>
+            <th scope="col">Affected</th>
+            <th scope="col">Time</th>
           </tr>
         </thead>
         <tbody>
           <?php
-            foreach ($debug_sql as $query) {
-                ?>
-                <tr>
-                  <td><?= h($query['query']); ?></td>
-                  <td><?= $query['error']; ?></td>
-                  <td><?= $query['affected']; ?></td>
-                  <td><?= $query['time']; ?></td>
-                </tr>
-              <?php
-            }
+          foreach ($debug_sql as $query) {
+              ?>
+            <tr>
+              <td><?= h($query['query']); ?></td>
+              <td><?= $query['error']; ?></td>
+              <td><?= $query['affected']; ?></td>
+              <td><?= $query['time']; ?></td>
+            </tr>
+          <?php
+          }
           ?>
         </tbody>
       </table>
     </div>
   </div>
 
-<script>
+  <script>
+    $(document).ready(function() {
+      debugbarTabSwitcher();
+    });
 
-  $( document ).ready(function() {
-    debugbarTabSwitcher();
-  });
-  function debugbarTabSwitcher(){
-    $( "#debug-hide-tab" ).click(function() {
+    function debugbarTabSwitcher() {
+      $("#debug-hide-tab").click(function() {
         $(".debugbar-body div").hide();
         $(".debugbar-summary").show();
         $(".debugbar-tab").removeClass('active');
         $(this).hide();
-         $(".debugbar").height('52px');
+        $(".debugbar").height('52px');
 
-    });
-    $( "#debug-console-tab" ).click(function() {
-      debugbarTabClick();
-      $( "#debugbar-console" ).show();
-      $(this).addClass('active');
+      });
+      $("#debug-console-tab").click(function() {
+        debugbarTabClick();
+        $("#debugbar-console").show();
+        $(this).addClass('active');
 
-    });
-    $( "#debug-request-tab" ).click(function() {
-        
-      debugbarTabClick();
-      $( "#debugbar-request" ).show();
-      $(this).addClass('active');
+      });
+      $("#debug-request-tab").click(function() {
 
-    });
+        debugbarTabClick();
+        $("#debugbar-request").show();
+        $(this).addClass('active');
 
-    $( "#debug-session-tab" ).click(function() {
-      debugbarTabClick();
-      $( "#debugbar-session" ).show();
-      $(this).addClass('active');
+      });
 
-    });
-    $( "#debug-sql-tab" ).click(function() {
-      debugbarTabClick();
-      $( "#debugbar-sql" ).show();
-      $(this).addClass('active');
-    });
-  }
-  function debugbarTabClick(){
+      $("#debug-session-tab").click(function() {
+        debugbarTabClick();
+        $("#debugbar-session").show();
+        $(this).addClass('active');
+
+      });
+      $("#debug-sql-tab").click(function() {
+        debugbarTabClick();
+        $("#debugbar-sql").show();
+        $(this).addClass('active');
+      });
+    }
+
+    function debugbarTabClick() {
       $(".debugbar").height('100%');
       $("#debug-hide-tab").show();
       $(".debugbar-summary").hide();
       $(".debugbar-body div").hide();
       $(".debugbar-tab").removeClass('active');
-  }
-</script>
+    }
+  </script>
