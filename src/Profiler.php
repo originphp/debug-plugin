@@ -59,6 +59,7 @@ class Profiler
             $message = $what .'  ' . $this->memoryUsage();
             $this->log($message);
         }
+
         return;
     }
 
@@ -92,7 +93,7 @@ class Profiler
      * @param string $message
      * @return bool
      */
-    public function log(string $message) : bool
+    public function log(string $message): bool
     {
         return (bool) file_put_contents(LOGS . DS . 'profile-' . $this->timestamp . '.log', $message ."\n", FILE_APPEND | LOCK_EX);
     }
