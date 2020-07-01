@@ -19,6 +19,7 @@
 namespace Debug;
 
 use Origin\Core\Config;
+use Origin\Utility\Number;
 use Origin\Http\Dispatcher;
 use Origin\Model\ConnectionManager;
 
@@ -65,24 +66,13 @@ class DebugBar
             ],
             'debug_vars' => [
                 'variables' => $controller->viewVars(),
-                'memory' => $this->mbkb(memory_get_usage(false)),
-                'took' => round(microtime(true) - START_TIME, 6) . ' seconds',
+                'memory' => Number::readableSize(memory_get_peak_usage()),
+                'took' => Number::precision(microtime(true) - START_TIME, 2) . ' seconds',
             ],
             'debug_session' => $_SESSION,
         ];
 
         extract($debugVars);
         include 'view.ctp';
-    }
-
-    public function mbkb($bytes)
-    {
-        $out = [$bytes / 1024,'kb'];
-
-        if ($bytes >= 1048576) {
-            $out = [$bytes / 1048576,'mb'];
-        }
-    
-        return number_format($out[0], 2) .' ' . $out[1];
     }
 }
