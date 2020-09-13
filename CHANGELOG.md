@@ -18,13 +18,21 @@ Create:       git tag -a <tag_name> -m '<tag_message>'
 Upload:       git push origin --tags
 Delete tag:   git tag -d <tag_name>
 
+## [2.2.1] - 2020-09-13
+
+### Fixed
+
+- Fixed HTML missing ending DIV tag
+
 ## [2.2.0] - 2020-07-01
 
 ### Changed
+
 - Changed memory summary to use peak usage
 - Changed timer to show on debugbar next to memory usage
 
 ## [2.1.0] - 2020-05-19
+
 ### Changed
 - Change debug var check to work with 2.6
 
