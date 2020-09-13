@@ -1,7 +1,7 @@
 <?php
 /**
  * OriginPHP Framework
- * Copyright 2018 - 2019 Jamiel Sharief.
+ * Copyright 2018 - 2020 Jamiel Sharief.
  *
  * Licensed under The MIT License
  * The above copyright notice and this permission notice shall be included in all copies or substantial
@@ -28,22 +28,21 @@ class DebugBar
     /**
      * Renders the DebugBar.
      *
-     * @return string|null output;
+     * @return void
      */
-    public function render()
+    public function render() : void
     {
         /**
          * @deprecated debug
          */
         if (! Config::read('App.debug') && ! Config::read('debug')) {
-            return null;
+            return;
         }
 
         /**
          * Don't Load in CLI (e.g. unit tests)
-         * @todo think how this should work
          */
-        if (php_sapi_name() === 'cli') {
+        if ((PHP_SAPI === 'cli' || PHP_SAPI === 'phpdbg')) {
             return;
         }
 
