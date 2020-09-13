@@ -101,7 +101,11 @@
   }
 </style>
 
+
+
+
 <div class="debugbar">
+
   <div class="debugbar-header">
     <a id="debug-console-tab" class="debugbar-tab" href="#">Console</a>
     <a id="debug-request-tab" class="debugbar-tab" href="#">Request</a>
@@ -112,49 +116,42 @@
     </div>
     <a id="debug-hide-tab" class="debugbar-tab float-right" href="#">&times; hide</a>
   </div>
+
   <div class="debugbar-body">
-    <div id='debugbar-console'>
+
+    <div id="debugbar-console">
       <dl class="row">
-        <?php
-        foreach ($debug_vars as $key => $value) {
-            ?>
+        <?php foreach ($debug_vars as $key => $value) : ?>
           <dt class="col-sm-1"><?= $key; ?></dt>
           <dd class="col-sm-11">
             <pre><?= h(print_r($value, true)); ?></pre>
           </dd>
-        <?php
-        }
-        ?>
+        <?php endforeach ?>
       </dl>
     </div>
+
     <div id="debugbar-request">
       <dl class="row">
-        <?php
-        foreach ($debug_request as $key => $value) {
-            ?>
+        <?php foreach ($debug_request as $key => $value) : ?>
           <dt class="col-sm-1"><?= $key; ?></dt>
           <dd class="col-sm-11">
             <pre><?= h(print_r($value, true)); ?></pre>
           </dd>
-        <?php
-        }
-        ?>
+        <?php endforeach ?>
       </dl>
     </div>
+
     <div id="debugbar-session">
       <dl class="row">
-        <?php
-        foreach ($debug_session as $key => $value) {
-            ?>
+        <?php foreach ($debug_session as $key => $value) : ?>
           <dt class="col-sm-1"><?= $key; ?></dt>
           <dd class="col-sm-11">
             <pre><?= h(print_r($value, true)); ?></pre>
           </dd>
-        <?php
-        }
-        ?>
+        <?php endforeach ?>
       </dl>
     </div>
+
     <div id="debugbar-sql">
       <table class="table">
         <thead>
@@ -166,69 +163,66 @@
           </tr>
         </thead>
         <tbody>
-          <?php
-          foreach ($debug_sql as $query) {
-              ?>
+          <?php foreach ($debug_sql as $query) : ?>
             <tr>
               <td><?= h($query['query']); ?></td>
               <td><?= $query['error']; ?></td>
               <td><?= $query['affected']; ?></td>
               <td><?= $query['time']; ?></td>
             </tr>
-          <?php
-          }
-          ?>
+          <?php endforeach ?>
         </tbody>
       </table>
     </div>
-  </div>
 
-  <script>
-    $(document).ready(function() {
-      debugbarTabSwitcher();
+  </div><!-- debugbar-body -->
+</div><!-- debugbar -->
+
+
+<script>
+  $(document).ready(function() {
+    debugbarTabSwitcher();
+  });
+
+  function debugbarTabSwitcher() {
+    $("#debug-hide-tab").click(function() {
+      $(".debugbar-body div").hide();
+      $(".debugbar-summary").show();
+      $(".debugbar-tab").removeClass('active');
+      $(this).hide();
+      $(".debugbar").height('52px');
+    });
+    
+    $("#debug-console-tab").click(function() {
+      debugbarTabClick();
+      $("#debugbar-console").show();
+      $(this).addClass('active');
     });
 
-    function debugbarTabSwitcher() {
-      $("#debug-hide-tab").click(function() {
-        $(".debugbar-body div").hide();
-        $(".debugbar-summary").show();
-        $(".debugbar-tab").removeClass('active');
-        $(this).hide();
-        $(".debugbar").height('52px');
+    $("#debug-request-tab").click(function() {
+      debugbarTabClick();
+      $("#debugbar-request").show();
+      $(this).addClass('active');
+    });
 
-      });
-      $("#debug-console-tab").click(function() {
-        debugbarTabClick();
-        $("#debugbar-console").show();
-        $(this).addClass('active');
+    $("#debug-session-tab").click(function() {
+      debugbarTabClick();
+      $("#debugbar-session").show();
+      $(this).addClass('active');
+    });
+    
+    $("#debug-sql-tab").click(function() {
+      debugbarTabClick();
+      $("#debugbar-sql").show();
+      $(this).addClass('active');
+    });
+  }
 
-      });
-      $("#debug-request-tab").click(function() {
-
-        debugbarTabClick();
-        $("#debugbar-request").show();
-        $(this).addClass('active');
-
-      });
-
-      $("#debug-session-tab").click(function() {
-        debugbarTabClick();
-        $("#debugbar-session").show();
-        $(this).addClass('active');
-
-      });
-      $("#debug-sql-tab").click(function() {
-        debugbarTabClick();
-        $("#debugbar-sql").show();
-        $(this).addClass('active');
-      });
-    }
-
-    function debugbarTabClick() {
-      $(".debugbar").height('100%');
-      $("#debug-hide-tab").show();
-      $(".debugbar-summary").hide();
-      $(".debugbar-body div").hide();
-      $(".debugbar-tab").removeClass('active');
-    }
-  </script>
+  function debugbarTabClick() {
+    $(".debugbar").height('100%');
+    $("#debug-hide-tab").show();
+    $(".debugbar-summary").hide();
+    $(".debugbar-body div").hide();
+    $(".debugbar-tab").removeClass('active');
+  }
+</script>
