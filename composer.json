@@ -1,14 +1,15 @@
 {
-    "name":"originphp/debug-plugin",
-    "description":"OriginPHP Debug Plugin",
-    "type": "originphp-plugin",
-    "autoload": {
-      "psr-4": {
-        "Debug\\": "src/",
-        "Debug\\Test\\": "tests/"
-      }
-    },
-    "require": {
-        "originphp/plugin-installer": "*"
+  "name": "originphp/debug-plugin",
+  "description": "OriginPHP Debug Plugin",
+  "type": "originphp-plugin",
+  "autoload": {
+    "psr-4": {
+      "Debug\\": "src/",
+      "Debug\\Test\\": "tests/"
     }
+  },
+  "require": {
+    "originphp/framework": "^3.24",
+    "originphp/plugin-installer": "*"
   }
+}

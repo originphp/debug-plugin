@@ -1,7 +1,7 @@
 <?php
 /**
  * OriginPHP Framework
- * Copyright 2018 - 2020 Jamiel Sharief.
+ * Copyright 2018 - 2021 Jamiel Sharief.
  *
  * Licensed under The MIT License
  * The above copyright notice and this permission notice shall be included in all copies or substantial
@@ -30,7 +30,7 @@ class DebugBar
      *
      * @return void
      */
-    public function render() : void
+    public function render(): void
     {
         /**
          * @deprecated debug
@@ -42,7 +42,7 @@ class DebugBar
         /**
          * Don't Load in CLI (e.g. unit tests)
          */
-        if ((PHP_SAPI === 'cli' || PHP_SAPI === 'phpdbg')) {
+        if (isConsole()) {
             return;
         }
 
@@ -61,14 +61,14 @@ class DebugBar
                 'params' => $request->params(),
                 'query' => $request->query(),
                 'data' => $request->data(),
-                'cookie' => $_COOKIE,
+                'cookie' => $request->cookies(),
             ],
             'debug_vars' => [
                 'variables' => $controller->viewVars(),
                 'memory' => Number::readableSize(memory_get_peak_usage()),
                 'took' => Number::precision(microtime(true) - START_TIME, 2) . ' seconds',
             ],
-            'debug_session' => $_SESSION,
+            'debug_session' => $request->session()->toArray()
         ];
 
         extract($debugVars);
